@@ -30,8 +30,8 @@ print(tm.getAccessToken())
 token_ctrl: tokenctrlgoogle.TokenCtrlGoogle
 client_id: xxx
 client_secret: yyy
-redirect_uris:
- - "urn:ietf:wg:oauth:2.0:oob"
+#redirect_uris:
+# - "urn:ietf:wg:oauth:2.0:oob"
 ```
 
 ### ◎microsoftの場合
