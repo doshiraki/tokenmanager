@@ -1,4 +1,4 @@
-from abc import abstractmethod
+from abc import abstractclassmethod, abstractmethod
 import importlib
 import yaml
 import datetime
@@ -7,7 +7,11 @@ import inspect
 class TokenManager:
     class ClientInfo:
         def __init__(self, clientInfo) -> None:
-            self.clientInfo = clientInfo
+            self.clientInfo:TokenManager.ClientInfo = clientInfo
+            default = self.getDefault()
+            for key in default:
+                clientInfo[key] = clientInfo.get(key, default[key])
+
         def me(self):
             return self.clientInfo
         def _getProps(self, name:str):
@@ -28,9 +32,12 @@ class TokenManager:
             return self._getProps(inspect.currentframe().f_code.co_name)
         def project_id(self)->str:
             return self._getProps(inspect.currentframe().f_code.co_name)
-        @abstractmethod
-        def getKeys(self):
+        @abstractclassmethod
+        def getDefault()->dict:
             pass
+
+        def getKeys(self)->list:
+            return self.getDefault().keys()
 
     class YamlIO:
         def __init__(self, yamlFile:str) -> None:

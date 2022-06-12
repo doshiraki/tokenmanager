@@ -56,13 +56,14 @@ class TokenCtrlAtlassian(TokenManager.TokenData):
         return TokenCtrlAtlassian.ClientInfo
 
     class ClientInfo(TokenManager.ClientInfo):
-        keys = [
-            TokenManager.ClientInfo.token_ctrl.__name__, #tokenctrlatlassian.TokenCtrlAtlassian
-            TokenManager.ClientInfo.auth_uri.__name__, #https://auth.atlassian.com/authorize
-            TokenManager.ClientInfo.token_uri.__name__, #https://auth.atlassian.com/oauth/token
-            TokenManager.ClientInfo.client_id.__name__, #cliend id
-            TokenManager.ClientInfo.client_secret.__name__, #cliend secret
-            TokenManager.ClientInfo.redirect_uris.__name__, #["http://localhost"]
-        ]
-        def getKeys(self):
-            return TokenCtrlAtlassian.ClientInfo.keys
+        _default = {
+                TokenManager.ClientInfo.token_ctrl.__name__: None, #tokenctrlatlassian.TokenCtrlAtlassian
+                TokenManager.ClientInfo.auth_uri.__name__: "https://auth.atlassian.com/authorize",
+                TokenManager.ClientInfo.token_uri.__name__: "https://auth.atlassian.com/oauth/token",
+                TokenManager.ClientInfo.client_id.__name__: None, #cliend id
+                TokenManager.ClientInfo.client_secret.__name__: None, #cliend secret
+                TokenManager.ClientInfo.redirect_uris.__name__: ["urn:ietf:wg:oauth:2.0:oob"], #["http://localhost"]
+            }
+
+        def getDefault(self)->dict:
+            return TokenCtrlAtlassian.ClientInfo._default

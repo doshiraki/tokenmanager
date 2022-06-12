@@ -33,13 +33,14 @@ class TokenCtrlGoogle(TokenManager.TokenData):
         return TokenCtrlGoogle.ClientInfo
 
     class ClientInfo(TokenManager.ClientInfo):
-        keys = [
-            TokenManager.ClientInfo.token_ctrl.__name__, #tokenctrlgoogle.TokenCtrlGoogle
-            TokenManager.ClientInfo.auth_uri.__name__, #https://accounts.google.com/o/oauth2/auth
-            TokenManager.ClientInfo.token_uri.__name__, #https://oauth2.googleapis.com/token
-            TokenManager.ClientInfo.client_id.__name__, #cliend id
-            TokenManager.ClientInfo.client_secret.__name__, #cliend secret
-            TokenManager.ClientInfo.redirect_uris.__name__, #["http://localhost"]
-        ]
-        def getKeys(self):
-            return TokenCtrlGoogle.ClientInfo.keys
+        _default = {
+                TokenManager.ClientInfo.token_ctrl.__name__: None, #tokenctrlgoogle.TokenCtrlGoogle
+                TokenManager.ClientInfo.auth_uri.__name__: "https://accounts.google.com/o/oauth2/auth",
+                TokenManager.ClientInfo.token_uri.__name__: "https://oauth2.googleapis.com/token",
+                TokenManager.ClientInfo.client_id.__name__: None, #cliend id
+                TokenManager.ClientInfo.client_secret.__name__: None, #cliend secret
+                TokenManager.ClientInfo.redirect_uris.__name__: None, #["http://localhost"]
+            }
+        def getDefault(self)->dict:
+            return TokenCtrlGoogle.ClientInfo._default
+

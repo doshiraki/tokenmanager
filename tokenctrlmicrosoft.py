@@ -46,12 +46,12 @@ class TokenCtrlMicrosoft(TokenManager.TokenData):
         return TokenCtrlMicrosoft.ClientInfo
 
     class ClientInfo(TokenManager.ClientInfo):
-        keys = [
-            TokenManager.ClientInfo.token_ctrl.__name__, #tokenctrlmicrosoft.TokenCtrlMicrosoft
-            TokenManager.ClientInfo.auth_uri.__name__, #https://login.microsoftonline.com/(Directory (tenant) ID)
-            TokenManager.ClientInfo.client_id.__name__, #(Application (client) ID)
-            TokenManager.ClientInfo.client_secret.__name__, #(Secret Value)
-            TokenManager.ClientInfo.redirect_uris.__name__, # https://login.microsoftonline.com/common/oauth2/nativeclient
-        ]
-        def getKeys(self):
-            return TokenCtrlMicrosoft.ClientInfo.keys
+        _default = {
+                TokenManager.ClientInfo.token_ctrl.__name__: None, #tokenctrlmicrosoft.TokenCtrlMicrosoft
+                TokenManager.ClientInfo.auth_uri.__name__: "https://login.microsoftonline.com/",
+                TokenManager.ClientInfo.client_id.__name__: None, #(Application (client) ID)
+                TokenManager.ClientInfo.client_secret.__name__: None, #(Secret Value)
+                TokenManager.ClientInfo.redirect_uris.__name__: ["msalc93a2a4e-9aba-4513-9424-e794706a2260://auth"], #["http://localhost"]
+            }
+        def getDefault(self)->dict:
+            return TokenCtrlMicrosoft.ClientInfo._default
