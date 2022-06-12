@@ -35,8 +35,8 @@ class TokenCtrlAtlassian(TokenManager.TokenData):
             self.clientInfo.redirect_uris(),
             randint(100000,999999)
         )
-        print("Confire Url Page: {}".format(url))
-        print("Then press Enter.")
+        print("Please visit this URL to authorize this application: {}".format(url))
+        print("Enter the authorization code: ")
         self.credentials:OAuth2Credentials = flow.step2_exchange(input())
         
 

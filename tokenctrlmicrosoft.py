@@ -22,8 +22,8 @@ class TokenCtrlMicrosoft(TokenManager.TokenData):
             scopes,
             redirect_uri=self.clientInfo.redirect_uris()
         )
-        print(code["auth_uri"])
-        print("Authorization code: ", end="")
+        print("Please visit this URL to authorize this application: " + code["auth_uri"])
+        print("Enter the authorization code: ", end="")
         self.credentials = self.app.acquire_token_by_authorization_code(
             input(),
             scopes, 
