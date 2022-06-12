@@ -16,6 +16,7 @@ tm = TokenManager("google_cs.yaml",
 #トークンの取得
 print(tm.getAccessToken())
 ```
+※google_user.yaml は初回実行時に認証後、コードを入力することで作成される。
 
 - google_cs.yaml
 ```yaml
@@ -29,17 +30,6 @@ redirect_uris:
  - "http://localhost"
 ```
 
-- googleのトークン取得 
-```python
-#クライアント情報を元にインスタンス生成
-tm = TokenManager("cs.yaml",
-  ['openid', 'https://mail.google.com/'],
-  "google_user.yaml")
-
-#トークンの取得
-print(tm.getAccessToken())
-```
-※google_user.yamlは自動生成される。
 
 - google_cs.yaml
 ```yaml
