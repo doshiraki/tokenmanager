@@ -26,6 +26,8 @@ class TokenCtrlAtlassian(TokenManager.TokenData):
             " ".join(scopes),
             auth_uri=self.clientInfo.auth_uri(),
             token_uri=self.clientInfo.token_uri(),
+            token_info_uri=None,
+            revoke_uri=None,
             audience="api.atlassian.com",
             prompt="consent",
         )
