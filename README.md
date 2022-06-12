@@ -30,19 +30,6 @@ redirect_uris:
  - "http://localhost"
 ```
 
-
-- google_cs.yaml
-```yaml
-token_ctrl: tokenctrlgoogle.TokenCtrlGoogle
-auth_uri: https://accounts.google.com/o/oauth2/auth
-token_uri: https://oauth2.googleapis.com/token
-client_id: xxx
-client_secret: yyy
-project_id: zzz
-redirect_uris:
- - "http://localhost"
-```
-
 ### ◎microsoftの場合
 
 - Microsoftのトークン取得 
