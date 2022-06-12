@@ -16,6 +16,10 @@ class TokenCtrlAtlassian(TokenManager.TokenData):
         self.credentials = OAuth2Credentials.from_json(json.dumps(self._load()))
 
     def create(self, scopes: list):
+        offilne = "offline_access"
+        if not offilne in scopes:
+            #refresh_token get
+            scopes.append(offilne)
         flow = OAuth2WebServerFlow(
             self.clientInfo.client_id(),
             self.clientInfo.client_secret(),
