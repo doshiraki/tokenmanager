@@ -62,7 +62,7 @@ class TokenCtrlAtlassian(TokenManager.TokenData):
                 TokenManager.ClientInfo.token_uri.__name__: "https://auth.atlassian.com/oauth/token",
                 TokenManager.ClientInfo.client_id.__name__: None, #cliend id
                 TokenManager.ClientInfo.client_secret.__name__: None, #cliend secret
-                TokenManager.ClientInfo.redirect_uris.__name__: ["urn:ietf:wg:oauth:2.0:oob"], #["http://localhost"]
+                TokenManager.ClientInfo.redirect_uris.__name__: None, #["http://localhost"]
             }
 
         def getDefault(self)->dict:
