@@ -62,3 +62,33 @@ client_secret: (secret)
 redirect_uris:
  - https://login.microsoftonline.com/common/oauth2/nativeclient
 ```
+
+
+### ◎Atlassianの場合
+
+- Atlassianのトークン取得 
+```python
+#クライアント情報を元にインスタンス生成
+tm = TokenManager("atlassian_cs.yaml", [
+    'read:me',
+    'read:account',
+    'read:confluence-content.summary',
+    'read:content:confluence',
+    'read:content-details:confluence'
+], "atlassian_user.yaml")
+
+
+#トークンの取得
+print(tm.getAccessToken())
+```
+
+- atlassian_cs.yaml
+```yaml
+token_ctrl: tokenctrlatlassian.TokenCtrlAtlassian
+auth_uri: https://auth.atlassian.com/authorize
+token_uri: https://auth.atlassian.com/oauth/token
+client_id: xxx
+client_secret: yyy
+redirect_uris:
+ - "http://localhost"
+```
