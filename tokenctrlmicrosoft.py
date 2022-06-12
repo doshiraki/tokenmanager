@@ -5,9 +5,13 @@ import datetime
 class TokenCtrlMicrosoft(TokenManager.TokenData):
     def __init__(self, fileName:str,clientInfo) -> None:
         super().__init__(fileName, clientInfo)
+        tenant_id = self.clientInfo.tenant_id()
+        auth_uri = self.clientInfo.auth_uri()
+        if auth_uri == TokenCtrlMicrosoft.ClientInfo._default["auth_uri"]:
+            auth_uri += tenant_id
         self.app = ConfidentialClientApplication(
             self.clientInfo.client_id(),
-            authority=self.clientInfo.auth_uri(),
+            authority=auth_uri,
         )
 
     def load(self):
@@ -49,6 +53,7 @@ class TokenCtrlMicrosoft(TokenManager.TokenData):
         _default = {
                 TokenManager.ClientInfo.token_ctrl.__name__: None, #tokenctrlmicrosoft.TokenCtrlMicrosoft
                 TokenManager.ClientInfo.auth_uri.__name__: "https://login.microsoftonline.com/",
+                TokenManager.ClientInfo.tenant_id.__name__: None,
                 TokenManager.ClientInfo.client_id.__name__: None, #(Application (client) ID)
                 TokenManager.ClientInfo.client_secret.__name__: None, #(Secret Value)
                 TokenManager.ClientInfo.redirect_uris.__name__: ["msalc93a2a4e-9aba-4513-9424-e794706a2260://auth"], #["http://localhost"]

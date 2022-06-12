@@ -39,7 +39,7 @@ class TokenCtrlGoogle(TokenManager.TokenData):
                 TokenManager.ClientInfo.token_uri.__name__: "https://oauth2.googleapis.com/token",
                 TokenManager.ClientInfo.client_id.__name__: None, #cliend id
                 TokenManager.ClientInfo.client_secret.__name__: None, #cliend secret
-                TokenManager.ClientInfo.redirect_uris.__name__: None, #["http://localhost"]
+                TokenManager.ClientInfo.redirect_uris.__name__: None, #["urn:ietf:wg:oauth:2.0:oob"]
             }
         def getDefault(self)->dict:
             return TokenCtrlGoogle.ClientInfo._default

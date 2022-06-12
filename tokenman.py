@@ -20,6 +20,8 @@ class TokenManager:
             return self.clientInfo[name]
         def token_ctrl(self)->str:
             return self._getProps(inspect.currentframe().f_code.co_name)
+        def tenant_id(self)->str:
+            return self._getProps(inspect.currentframe().f_code.co_name)
         def client_id(self)->str:
             return self._getProps(inspect.currentframe().f_code.co_name)
         def client_secret(self)->str:

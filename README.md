@@ -28,12 +28,10 @@ print(tm.getAccessToken())
 - google_cs.yaml
 ```yaml
 token_ctrl: tokenctrlgoogle.TokenCtrlGoogle
-auth_uri: https://accounts.google.com/o/oauth2/auth
-token_uri: https://oauth2.googleapis.com/token
 client_id: xxx
 client_secret: yyy
 redirect_uris:
- - "http://localhost"
+ - "urn:ietf:wg:oauth:2.0:oob"
 ```
 
 ### ◎microsoftの場合
@@ -56,11 +54,11 @@ print(tm.getAccessToken())
 - microsoft_cs.yaml
 ```yaml
 token_ctrl: tokenctrlmicrosoft.TokenCtrlMicrosoft
-auth_uri: https://login.microsoftonline.com/(tenant id)
+tenant_id: (tenant id)
 client_id: (application id)
 client_secret: (secret)
-redirect_uris:
- - https://login.microsoftonline.com/common/oauth2/nativeclient
+#redirect_uris:
+# - https://login.microsoftonline.com/common/oauth2/nativeclient
 ```
 
 
@@ -85,8 +83,6 @@ print(tm.getAccessToken())
 - atlassian_cs.yaml
 ```yaml
 token_ctrl: tokenctrlatlassian.TokenCtrlAtlassian
-auth_uri: https://auth.atlassian.com/authorize
-token_uri: https://auth.atlassian.com/oauth/token
 client_id: xxx
 client_secret: yyy
 redirect_uris:
