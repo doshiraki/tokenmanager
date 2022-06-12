@@ -4,7 +4,14 @@ OAuth2のトークンの取得
 - Authorization code方式のため、ユーザを後から紐付けることができる。
 - Token取得時に期限が切れている場合、Refreshを行う
 
+
 ## ■使い方
+#### 【補足】
+- 各例では、Oauth2のクライアント情報のclient_id・client_secretのファイルは「？？_cs.yaml」で
+プログラムの初期設定として保存。
+- ユーザ情報のaccess_token・refresh_tokenのファイルは「？？_user.yaml」で初回作成されます。
+- 時間が期限切れになるとユーザ情報は再作成せれます。
+
 ### ◎googleの場合
 - googleのトークン取得 
 ```python
