@@ -12,7 +12,8 @@ class TokenCtrlGoogle(TokenManager.TokenData):
         self.session = AuthorizedSession(Credentials.from_authorized_user_info(self._load()))
 
     def create(self, scopes: list):
-        flow = InstalledAppFlow.from_client_config({"installed":self.clientInfo}, scopes=scopes)
+        print(self.clientInfo.me())
+        flow = InstalledAppFlow.from_client_config({"installed":self.clientInfo.me()}, scopes=scopes)
         flow.run_console()
         self.session = flow.authorized_session()
 
@@ -33,13 +34,12 @@ class TokenCtrlGoogle(TokenManager.TokenData):
 
     class ClientInfo(TokenManager.ClientInfo):
         keys = [
-            "token_ctrl", #tokenctrlgoogle.TokenCtrlGoogle
-            "auth_uri", #https://accounts.google.com/o/oauth2/auth
-            "token_uri", #https://oauth2.googleapis.com/token
-            "client_id", #cliend id
-            "client_secret", #cliend secret
-            "redirect_uris", #["http://localhost"]
-            "project_id", #google project id
+            TokenManager.ClientInfo.token_ctrl.__name__, #tokenctrlgoogle.TokenCtrlGoogle
+            TokenManager.ClientInfo.auth_uri.__name__, #https://accounts.google.com/o/oauth2/auth
+            TokenManager.ClientInfo.token_uri.__name__, #https://oauth2.googleapis.com/token
+            TokenManager.ClientInfo.client_id.__name__, #cliend id
+            TokenManager.ClientInfo.client_secret.__name__, #cliend secret
+            TokenManager.ClientInfo.redirect_uris.__name__, #["http://localhost"]
         ]
         def getKeys(self):
             return TokenCtrlGoogle.ClientInfo.keys

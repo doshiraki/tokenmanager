@@ -8,10 +8,14 @@ class TokenManager:
     class ClientInfo:
         def __init__(self, clientInfo) -> None:
             self.clientInfo = clientInfo
+        def me(self):
+            return self.clientInfo
         def _getProps(self, name:str):
             if not name in self.getKeys():
                 raise Exception("no props")
             return self.clientInfo[name]
+        def token_ctrl(self)->str:
+            return self._getProps(inspect.currentframe().f_code.co_name)
         def client_id(self)->str:
             return self._getProps(inspect.currentframe().f_code.co_name)
         def client_secret(self)->str:

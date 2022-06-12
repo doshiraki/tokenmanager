@@ -47,7 +47,7 @@ class TokenCtrlMicrosoft(TokenManager.TokenData):
 
     class ClientInfo(TokenManager.ClientInfo):
         keys = [
-            TokenManager.ClientInfo.token_uri.__name__, #tokenctrlmicrosoft.TokenCtrlMicrosoft
+            TokenManager.ClientInfo.token_ctrl.__name__, #tokenctrlmicrosoft.TokenCtrlMicrosoft
             TokenManager.ClientInfo.auth_uri.__name__, #https://login.microsoftonline.com/(Directory (tenant) ID)
             TokenManager.ClientInfo.client_id.__name__, #(Application (client) ID)
             TokenManager.ClientInfo.client_secret.__name__, #(Secret Value)
